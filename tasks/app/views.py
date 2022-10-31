@@ -3,6 +3,7 @@ from django.core.mail import send_mass_mail,BadHeaderError
 from django.views.generic.list import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 from .models import Feedback
 from django.http import HttpResponse
 from .forms import FeedbackForm
@@ -18,13 +19,14 @@ def feedback(request):
     if request.method=='POST':
      form=FeedbackForm(request.POST)
      if form.is_valid():
-        name=form.cleaned_data['name']
-        email=form.cleaned_data['email']
-        Comments=form.cleaned_data['Comments']
-        t=form.save(commit=False)
+        name=request.POST['name']
+        email=request.POST['email']
+        Comments=request.POST['Comments']
+        t= Feedback.objects.create(name=name, email=email,Comments=Comments)
+        t.save()
         try:
-            m1=(name, Comments, email, ["trialpyexpt@gmail.com"])
-            m2=("Thank for your response",f"Your Response :{Comments}",email,[email])
+            m1=(name, Comments, email, [settings.EMAIL_HOST_USER])
+            m2=("Thank for your response","please keep giving regular feedback",settings.EMAIL_HOST_USER,[email])
             send_mass_mail((m1, m2), fail_silently=False)
         except BadHeaderError:
             return HttpResponse("Invalid header found.")
@@ -35,10 +37,10 @@ def feedback(request):
 class FeedListView(LoginRequiredMixin,ListView):
     model=Feedback
     context_object_name='feed'
-    def get_context_data(self, **kwargs):
-         context = super().get_context_data(**kwargs)
-         context['feed']=context['feed'].filter(user=self.request.user)
-         return context
+    def get_queryset(self):
+        print(Feedback.objects.filter(name=self.request.user))
+        return Feedback.objects.all()
+    
 @login_required(login_url='/login')
 def display(request):
     return render(request,'app/display.html')
