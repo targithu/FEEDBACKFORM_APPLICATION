@@ -8,12 +8,6 @@ from .models import Feedback
 from django.http import HttpResponse
 from .forms import FeedbackForm
 # Create your views here.
-#superuser:taruser
-#password:1@2@3
-#username:taru
-#password:321321321@
-#username:tsh
-#password:@321321321
 @login_required(login_url='/login')
 def feedback(request):
     if request.method=='POST':
@@ -22,8 +16,9 @@ def feedback(request):
         name=request.POST['name']
         email=request.POST['email']
         Comments=request.POST['Comments']
-        t= Feedback.objects.create(name=name, email=email,Comments=Comments)
-        t.save()
+        k=form.save(commit=False)
+        k.user = request.user
+        k.save()
         try:
             m1=(name, Comments, email, [settings.EMAIL_HOST_USER])
             m2=("Thank for your response","please keep giving regular feedback",settings.EMAIL_HOST_USER,[email])
@@ -37,9 +32,6 @@ def feedback(request):
 class FeedListView(LoginRequiredMixin,ListView):
     model=Feedback
     context_object_name='feed'
-    def get_queryset(self):
-        print(Feedback.objects.filter(name=self.request.user))
-        return Feedback.objects.all()
     
 @login_required(login_url='/login')
 def display(request):
