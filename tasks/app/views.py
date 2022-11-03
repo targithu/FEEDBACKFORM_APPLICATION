@@ -26,7 +26,7 @@ def feedback(request):
         k.user = request.user
         k.save()
         try:
-            m1=(name, Comments, email, [settings.EMAIL_HOST_USER])
+            m1=(f"Feedback Form By {name}",f"Feedback:{Comments}", email, [settings.EMAIL_HOST_USER,email])
             m2=("Thank for your response","please keep giving regular feedback",settings.EMAIL_HOST_USER,[email])
             send_mass_mail((m1, m2), fail_silently=False)
         except BadHeaderError:

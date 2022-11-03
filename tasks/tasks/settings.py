@@ -26,12 +26,18 @@ SECRET_KEY = 'django-insecure-=-_vbte@(3hhm0*k#u9li_w1y9x#9+7tgx8u2jwzyb^9q$0elj
 DEBUG = True
 
 ALLOWED_HOSTS = []
+EMAIL_PORT = 587
+# for security purpose the host  password won't be displayed now
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'smtp2user@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS=True
-# for security purpose the host user and password would be removed from views and will be shown only while displaying
-EMAIL_PORT = 587
+
+# EMAIL_HOST_USER = 'smtp2user@gmail.com'
+EMAIL_HOST_PASSWORD = 'vtdyiozjxquifjds'
+# EMAIL_PORT = 587
 # Application definition
 
 INSTALLED_APPS = [

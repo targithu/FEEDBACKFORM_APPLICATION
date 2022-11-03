@@ -12,17 +12,19 @@
         {% load static %}
         <style>
           body{
-            animation: example 1.5s;
+            color:white;
+            animation: example 5s;
+            animation-timing-function:ease-in-out;
              animation-iteration-count: infinite;
               font-family: 'Merriweather';
               font-style: italic;
               font-weight: 400;
               font-display: swap;
-            
+            animation-direction:alternate;
           }
           @keyframes example {
-            from   {background-image:linear-gradient(to right,white,aqua);}
-            to  {background-image:linear-gradient(to right,aqua,yellow); }
+            from   {background-color:black;}
+            to  {background-color:midnightblue; }
           }
         </style>
     </head>
@@ -32,20 +34,20 @@
         <center><h2>Your forms:</h2></center>
       {% for task in object_list %}
        {% if user == task.user %}
-     <div class="table-responsive">
-      <table class="table table-striped table-fixed">
+     <div class="table-responsive" style="color:white;">
+      <table class="table table-bordered table-fixed">
         <thead>
           <tr>
-            <th style="width:28%">Name</th>
-            <th style="width:28%">Email(User)</th>
-            <th style="width:28%">Comments</th>
+            <th style="width:28%;color:white;">Name</th>
+            <th style="width:28%;color:white;">Email(User)</th>
+            <th style="width:28%;color:white;">Comments</th>
           </tr>
         </thead>
         <tbody>
             <tr>
-              <td style="width:28%">{{task.name}}</td>
-              <td style="width:28%">{{task.email}}</td>
-              <td style="width:28%">{{task.Comments}}</td>
+              <td style="width:28%;color:white;">{{task.user}}</td>
+              <td style="width:28%;color:white;">{{task.email}}</td>
+              <td style="width:28%;color:white;">{{task.Comments}}</td>
             </tr>
         </tbody>
     </table>
