@@ -3,40 +3,57 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <center><h1 style="color:white;">{% block title %}Feedback Form{% endblock%}</h1></center>
+        <center><h1 style="color:white">{% block title %}Feedback Form{% endblock%}</h1></center>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../static/app/style.css">
+        
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         {% load static %}
         <style>
+          .asteriskField {
+            display: none;
+        }
+  .form-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+   .rounded{
+    margin:4% 10% 4% 10%;
+    font-family: 'Merriweather';
+    font-size: 1.3em;
+    border-radius:2rem;
+   background-color:black;
+   color:blue;
+   }
+   
           body{
-             background-image:linear-gradient(to right,midnightblue,red);
-          }
+             {% comment %} background-image:linear-gradient(to right,midnightblue,red); {% endcomment %}
+          background-color:darkblue;}
         </style>
       </head>
     <body>
       {% if user.is_authenticated %}
-      <li class="nav-item" >
-      <span style="color:white">Logged in as {{user.username}}<a class="nav-link" href='/logout'>|Logout</a></span>
-        </li>
+     
+    <center><a style="text-decoration:none;color:red" href='/logout'>Logout </a></span></center>
+       
       {% else %}
       <li class="nav-item">
           <a class="nav-link" href='/login'>Login</a>
       </li>
       {% endif %}
+    <div class="rounded">
+      <center><a href="/feed" style="color:white;text-decoration:none;font-family: 'Merriweather';
+        font-size: 1.3em;">HELLO {{user.username|capfirst}}, CHECK ALL THE PREVIOUS FEEDBACKS BY YOUR SIDE(CLICK HERE)</a></center><br>
       <div class="container" >
-       <center><a href="/feed" style="color:white;text-decoration:none">TO CHECK ALL THE PREVIOUS FEEDBACKS BY YOUR SIDE(CLICK HERE)</a></center>
         {% load crispy_forms_tags %}
-        <div class="rounded-circle">
 <form method="post" >
   {% csrf_token %}
   {{form|crispy}}
   <center><button type="submit" class="btn btn-success">SUBMIT</button></center>
 </form>
 </div>
-hi
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
