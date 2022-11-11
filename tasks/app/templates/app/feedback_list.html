@@ -28,34 +28,34 @@
           }
         </style>
     </head>
-    <body >
-        <center><h5><a href="/" style="text-decoration:none;color:red">ADD FEEDBACK(CLICK HERE)</a></h5></center>
-        <center><h2>TOTAL  forms submitted to us by all our users are  {{object_list.count}}  :</h2></center>
+    <body ><br>
+        <center><h5><a href="/" style="text-decoration:none;color:red">ADD FEEDBACK(CLICK HERE)</a></h5></center><br>
+        <center><h2>TOTAL  forms submitted to us by all our users are  {{object_list.count}}  :</h2></center><br>
         <center><h2>Your forms:</h2></center>
-      {% for task in object_list %}
-       {% if user == task.user %}
+   
      <div class="table-responsive" style="color:white;">
       <table class="table table-bordered table-fixed">
         <thead>
           <tr>
-            <th style="width:28%;color:white;">Name</th>
-            <th style="width:28%;color:white;">Email(User)</th>
-            <th style="width:28%;color:white;">Comments</th>
+          <th style="width:14%;color:white;">USER</th>
+          <th style="width:40%;color:white;">EMAIL</th>
+          <th style="width:46%;color:white;">COMMENTS</th>
           </tr>
         </thead>
+        {% for task in object_list %}
+        {% if user == task.user %}
         <tbody>
             <tr>
-              <td style="width:28%;color:white;">{{task.user}}</td>
-              <td style="width:28%;color:white;">{{task.email}}</td>
-              <td style="width:28%;color:white;">{{task.Comments}}</td>
+            <td style="width:14%;color:white;">{{task.user}}</td>
+            <td style="width:40%;color:white;">{{task.email}}</td>
+            <td style="width:46%;color:white;">{{task.Comments}}</td>
             </tr>
         </tbody>
-    </table>
-</div>
-       {% comment %} <center> <span><h3>{{task.id}}. Name:{{task.name}},Email(User):{{task.email}},Comments:{{task.Comments}}</h3> <span><br></center> {% endcomment %}
         {% endif %}
         {% empty %}
         <h6>No items in list</h6>
+    </table>
+</div>
         {% endfor %}
        
         <script src="" async defer></script>
