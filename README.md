@@ -16,4 +16,9 @@ django-admin startproject tasks
 cd tasks  
 python manage.py runserver  
 python manage.py startapp app
-```
+```  
+BELOW ARE THE CREDENTIALS TO LOGIN TO THE WEBSITE:  
+<i>1)username:taru password:321321321@  
+<i>2)username:tsh password:@321321321   </i>  
+[Click on this link to visit website](https://tar9.pythonanywhere.com/)  
+<i>After filling out the form make sure that you do checkout the mail you have entered</i>
