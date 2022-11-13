@@ -6,7 +6,6 @@
 tasks|-tasks(project level)
      |- app(app level)
 ```  
-<i>Also the requirements.txt should be taken in the project tasks,here it is kept outside project level to display the modules used!</i>
 ### Instructions(In Terminal):  
 ```python  
 virtualenv venv  
