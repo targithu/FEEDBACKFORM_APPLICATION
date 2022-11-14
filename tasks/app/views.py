@@ -8,12 +8,6 @@ from .models import Feedback
 from django.http import HttpResponse
 from .forms import FeedbackForm
 # Create your views here.
-# superuser:taruser
-# password:1@2@3
-# username:taru
-# password:321321321@
-# username:tsh
-# password:@321321321
 @login_required(login_url='/login')
 def feedback(request):
     if request.method=='POST':
