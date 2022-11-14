@@ -16,7 +16,7 @@ cd tasks
 python manage.py runserver  
 python manage.py startapp app
 ```  
-BELOW ARE THE CREDENTIALS TO LOGIN TO THE WEBSITE: 
+BELOW ARE THE CREDENTIALS TO LOGIN TO THE WEBSITE:  
 <i>note:this account  is made for the visitors</i>  
 <i>2)username:tsh password:@321321321   </i>  
 [Click on this link to visit website](https://tar9.pythonanywhere.com/)  
