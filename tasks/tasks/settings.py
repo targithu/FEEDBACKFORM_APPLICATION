@@ -31,8 +31,7 @@ EMAIL_PORT = 587
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'smtp2user@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'vtdyiozjxquifjds'
 EMAIL_USE_TLS=True
 # Application definition
 
@@ -46,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'crispy_bootstrap5',
+    'tailwind',
+
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/login'
+
+TAILWIND_APP_NAME = 'app'
