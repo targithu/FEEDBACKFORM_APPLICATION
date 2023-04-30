@@ -13,14 +13,15 @@ def feedback(request):
     if request.method=='POST':
      form=FeedbackForm(request.POST)
      if form.is_valid():
-        name=request.POST['name']
+        subject=request.POST['subject']
+        rating=request.POST['rating']
         email=request.POST['email']
-        Comments=request.POST['Comments']
+        comments=request.POST['comments']
         k=form.save(commit=False)
         k.user = request.user
         k.save()
         try:
-            m1=(f"Feedback Form By {name}",f"Feedback:{Comments}", email, [settings.EMAIL_HOST_USER,email])
+            m1=(f"Feedback Form By {k.user}",f"Subject:{subject} \n Rating:{rating} \n Feedback:{comments} ", email, [settings.EMAIL_HOST_USER,email])
             m2=("Thank for your response","please keep giving regular feedback",settings.EMAIL_HOST_USER,[email])
             send_mass_mail((m1, m2), fail_silently=False)
         except BadHeaderError:
@@ -32,6 +33,8 @@ def feedback(request):
 class FeedListView(LoginRequiredMixin,ListView):
     model=Feedback
     context_object_name='feed'
+    def get_queryset(self):
+        return Feedback.objects.filter(user=self.request.user).order_by('-id')
     
 @login_required(login_url='/login')
 def display(request):

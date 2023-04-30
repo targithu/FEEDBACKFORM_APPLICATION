@@ -3,5 +3,5 @@ from .models import Feedback
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model=Feedback
-        fields=("name","email","Comments")
+        fields=("subject","email","comments","rating")
  
