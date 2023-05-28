@@ -9,9 +9,6 @@ Formify is a FeedbackForm Web application built using Django that enables users 
 tasks|-tasks(project level)
      |- app(app level)
 ```  
-
-### Requirements:
- - Python3  
 ## Instructions
 Follow these steps to set up and run the FeedbackForm application:  
 
