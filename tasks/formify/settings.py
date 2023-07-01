@@ -29,7 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 EMAIL_PORT = 587
-
 # Application definition
 
 INSTALLED_APPS = [
